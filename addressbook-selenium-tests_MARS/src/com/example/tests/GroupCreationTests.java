@@ -9,16 +9,16 @@ public class GroupCreationTests extends TestBase {
 	  int group_count = 2;
 	  
 	  for (int i = 1; i<=group_count; i++) {
-		openMainPage();
-		gotoGroupsPage();
-		initGroupCreation();
+		app.openMainPage();
+		app.gotoGroupsPage();
+		app.initGroupCreation();
 		GroupData group = new GroupData();
 		group.group_name = "group"+" "+i;
 		group.group_header = "header"+" "+i;
 		group.group_footer = "footer"+" "+i;
-		fillGroupForm(group, i);
-		submitGroupCreation();
-		returnToGroupsPage();
+		app.fillGroupForm(this, group, i);
+		app.submitGroupCreation();
+		app.returnToGroupsPage();
 	  }
   }
   
@@ -30,13 +30,13 @@ public class GroupCreationTests extends TestBase {
 	  int group_count = 2;
 	  
 	  for (int i = 1; i<=group_count; i++) {
-		openMainPage();
-		gotoGroupsPage();
-		initGroupCreation();
+		app.openMainPage();
+		app.gotoGroupsPage();
+		app.initGroupCreation();
 		GroupData group = new GroupData(group_name, group_header, group_footer);
-		fillGroupForm(group, i);
-		submitGroupCreation();
-		returnToGroupsPage();
+		app.fillGroupForm(this, group, i);
+		app.submitGroupCreation();
+		app.returnToGroupsPage();
 	  }
   }
 }
