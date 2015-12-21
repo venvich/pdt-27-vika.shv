@@ -31,8 +31,6 @@ public class ContactHelper extends HelperBase {
 	    type(By.name("phone2"), contact.phone2);
 	}
 
-	
-
 	public void submitContactCreation() {
 		click(By.name("submit"));
 	}
@@ -40,5 +38,32 @@ public class ContactHelper extends HelperBase {
 	public void gotoHomePage() {
 		click(By.linkText("home page"));
 	}
+	
+	public void selectContactByIndex(int index) {
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + index + "]/td[1]"));
+	}
+
+	public void initContactModification(int index) {
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + index + "]/td[7]/a/img"));
+	}
+	
+	public void submitContactModification() {
+		click(By.name("update"));
+	}
+
+	public void showContactDetails(int index) {
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + index + "]/td[6]/a/img"));
+	}
+
+	public void deleteContact() {
+		click(By.xpath(".//*[@id='content']/form[2]/input[2]"));
+	}
+
+	public void addToNewGroup() {
+		selectByText(By.name("to_group"), "Rob");
+		click(By.name("add"));
+	}
+
+
 
 }
