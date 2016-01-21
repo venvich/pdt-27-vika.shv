@@ -1,6 +1,10 @@
 package com.example.framework;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import com.example.tests.ContactData;
 
@@ -62,6 +66,19 @@ public class ContactHelper extends HelperBase {
 	public void addToNewGroup() {
 		selectByText(By.name("to_group"), "Rob");
 		click(By.name("add"));
+	}
+
+	public List<ContactData> getContacts() {
+		List<ContactData> contacts = new ArrayList<ContactData>();
+		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
+		for (WebElement checkbox : checkboxes) {
+			ContactData contact = new ContactData();
+			String title = checkbox.getAttribute("title");
+			//String contactName = contact.firstname + " " + contact.lastname;
+			contact.lastname = title.substring("Select (Personname ".length(), title.length() - ")".length());
+			contacts.add(contact);
+		}
+		return contacts;
 	}
 
 
