@@ -30,11 +30,11 @@ public class TestBase {
 	public Iterator<Object[]> randomValidGroupGenerator() {
 		List<Object[]> list = new ArrayList<Object[]>();
 		
-		for (int i=0; i<5; i++) {
-			GroupData group = new GroupData();
-			group.group_name = generateRandomString();
-			group.group_header = generateRandomString();
-			group.group_footer = generateRandomString();
+		for (int i=0; i<2; i++) {
+			GroupData group = new GroupData()
+			.withName(generateRandomString())
+			.withHeader(generateRandomString())
+			.withFooter(generateRandomString());
 			list.add(new Object[]{group});
 		}
 		return list.iterator();

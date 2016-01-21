@@ -1,9 +1,9 @@
 package com.example.tests;
 
 public class GroupData implements Comparable<GroupData>{
-	public String group_name;
-	public String group_header;
-	public String group_footer;
+	private String group_name;
+	private String group_header;
+	private String group_footer;
 
 	public GroupData() {
 	}
@@ -24,7 +24,7 @@ public class GroupData implements Comparable<GroupData>{
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		//final int prime = 31;
 		int result = 1;
 		//result = prime * result + ((group_name == null) ? 0 : group_name.hashCode());
 		return result;
@@ -52,6 +52,32 @@ public class GroupData implements Comparable<GroupData>{
 
 		return this.group_name.toLowerCase().compareTo(other.group_name.toLowerCase());
 	}
-	
+
+	public GroupData withName(String name) {
+		this.group_name = name;
+		return this;
+	}
+
+	public GroupData withHeader(String header) {
+		this.group_header = header;
+		return this;
+	}
+
+	public GroupData withFooter(String footer) {
+		this.group_footer = footer;
+		return this;
+	}
+
+	public String getGroup_name() {
+		return group_name;
+	}
+
+	public String getGroup_header() {
+		return group_header;
+	}
+
+	public String getGroup_footer() {
+		return group_footer;
+	}
 	
 }

@@ -13,17 +13,18 @@ public class GroupCreationTests extends TestBase {
 	  int group_count = 1;
 	  
 	  for (int i = 1; i<=group_count; i++) {
-		app.getNavigationHelper().openMainPage();
-		app.getNavigationHelper().gotoGroupsPage();
+		app.navigateTo().mainPage();
+		app.navigateTo().groupsPage();
 		
 		//save old state 
 		List<GroupData> oldList = app.getGroupHelper().getGroups();
 		
 		//actions
-		app.getGroupHelper().initGroupCreation();
-		app.getGroupHelper().fillGroupForm(group, i);
-		app.getGroupHelper().submitGroupCreation();
-		app.getGroupHelper().returnToGroupsPage();
+		app.getGroupHelper()
+			.initGroupCreation()
+			.fillGroupForm(group, i)
+			.submitGroupCreation()
+			.returnToGroupsPage();
 		
 		//save new state
 		List<GroupData> newList = app.getGroupHelper().getGroups();

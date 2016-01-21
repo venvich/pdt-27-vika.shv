@@ -14,50 +14,56 @@ public class GroupHelper extends HelperBase {
 		super(manager);
 	}
 
-	public void initGroupCreation() {
+	public GroupHelper initGroupCreation() {
 		click(By.name("new"));
+		return this;
 	}
 
-	public void fillGroupForm(GroupData group, int i) {
-		type(By.name("group_name"), group.group_name);
-		type(By.name("group_header"), group.group_header);
-		type(By.name("group_footer"), group.group_footer);
+	public GroupHelper fillGroupForm(GroupData group, int i) {
+		type(By.name("group_name"), group.getGroup_name());
+		type(By.name("group_header"), group.getGroup_header());
+		type(By.name("group_footer"), group.getGroup_footer());
+		return this;
 	}
 
-	public void submitGroupCreation() {
+	public GroupHelper submitGroupCreation() {
 		click(By.name("submit"));
+		return this;
 	}
 	
-	public void returnToGroupsPage() {
+	public GroupHelper returnToGroupsPage() {
 		click(By.linkText("group page"));
+		return this;
 	}
 
-	public void deleteGroup(int index) {
+	public GroupHelper deleteGroup(int index) {
 		selectGroupByIndex(index);
-		click(By.name("delete"));		
+		click(By.name("delete"));
+		return this;
 	}
 
 	private void selectGroupByIndex(int index) {
 		click(By.xpath(".//*[@id='content']/form[2]/input[" + (index+1) + "]"));
 	}
 
-	public void initGroupModification(int index) {
+	public GroupHelper initGroupModification(int index) {
 		selectGroupByIndex(index);
 		click(By.name("edit"));
+		return this;
 	}
 
-	public void submitGroupModification() {
+	public GroupHelper submitGroupModification() {
 		click(By.name("update"));
+		return this;
 	}
 
 	public List<GroupData> getGroups() {
 		List<GroupData> groups = new ArrayList<GroupData>();
 		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
 		for (WebElement checkbox : checkboxes) {
-			GroupData group = new GroupData();
 			String title = checkbox.getAttribute("title");
-			group.group_name = title.substring("Select (".length(), title.length()-")".length());
-			groups.add(group);
+			String name = title.substring("Select (".length(), title.length()-")".length());
+			groups.add(new GroupData().withName(name));
 		}
 		return groups;
 	}

@@ -6,10 +6,10 @@ public class ContactAddToGroupTest extends TestBase {
 	
 	@Test
 	public void addContactToGroup(){
-	app.getNavigationHelper().openMainPage();
+	app.navigateTo().mainPage();
 	app.getContactHelper().selectContactByIndex(2);
 	app.getContactHelper().addToNewGroup();
-	app.getNavigationHelper().goHome();
+	app.navigateTo().goHome();
 	}
 
 }
