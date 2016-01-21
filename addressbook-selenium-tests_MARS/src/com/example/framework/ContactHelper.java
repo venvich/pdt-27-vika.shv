@@ -56,7 +56,7 @@ public class ContactHelper extends HelperBase {
 	}
 
 	public void showContactDetails(int index) {
-		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + index + "]/td[6]/a/img"));
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + (index+1) + "]/td[6]/a/img"));
 	}
 
 	public void deleteContact() {

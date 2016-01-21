@@ -21,8 +21,8 @@ public class ContactModificationTests extends TestBase {
 		int index = rnd.nextInt(oldList.size()-1);
 		
 		//actions
-		//app.getContactHelper().selectContactByIndex(index);
-		app.getContactHelper().initContactModification(index);
+		app.getContactHelper().initContactModification(1);
+		//app.getContactHelper().initContactModification(index);
 		ContactData contact = new ContactData();
 		contact.home = "911";
 		contact.lastname = "Lastname";
@@ -36,7 +36,8 @@ public class ContactModificationTests extends TestBase {
 	    List<ContactData> newList = app.getContactHelper().getContacts();
 	    
 	    //compare states
-	    oldList.remove(index);
+	    oldList.remove(1);
+	    //oldList.remove(index);
 	    oldList.add(contact);
 	    Collections.sort(oldList);
 	    Collections.sort(newList);

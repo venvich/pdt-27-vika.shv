@@ -23,10 +23,6 @@ public class GroupCreationTests extends TestBase {
 		
 		//actions
 		app.getGroupHelper().initGroupCreation();
-		//GroupData group = new GroupData();
-		//group.group_name = "group"+" "+i;
-		//group.group_header = "header"+" "+i;
-		//group.group_footer = "footer"+" "+i;
 		app.getGroupHelper().fillGroupForm(group, i);
 		app.getGroupHelper().submitGroupCreation();
 		app.getGroupHelper().returnToGroupsPage();
