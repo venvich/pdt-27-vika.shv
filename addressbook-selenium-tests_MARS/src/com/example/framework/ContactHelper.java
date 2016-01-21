@@ -44,11 +44,11 @@ public class ContactHelper extends HelperBase {
 	}
 	
 	public void selectContactByIndex(int index) {
-		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + index + "]/td[1]"));
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + (index+1) + "]/td[1]"));
 	}
 
 	public void initContactModification(int index) {
-		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + index + "]/td[7]/a/img"));
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + (index+1) + "]/td[7]/a/img"));
 	}
 	
 	public void submitContactModification() {
