@@ -11,39 +11,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class ContactCreationTest extends TestBase {
-	@DataProvider
-	public Iterator<Object[]> randomValidContactGenerator() {
-		List<Object[]> list = new ArrayList<Object[]>();
-		
-		for (int i = 0; i<2; i++) {
-			ContactData contact = new ContactData();
-			
-			contact.firstname = generateRandomString() + "_firstname";
-			contact.lastname = generateRandomString() + "_lastname";
-			contact.address = generateRandomString() + "_address";
-			contact.home = "+41411111111";
-			contact.mobile = "+41782222222";
-			contact.work = "+41333333333";
-			contact.email = generateRandomString() + "@gmail.com";
-			contact.email2 = generateRandomString() + "@gmail.com";
-			contact.bday = "22";
-			contact.bmonth = "September";
-			contact.byear = "1986";
-			contact.address2 = generateRandomString() + "_address2";
-			contact.phone2 = "+414444444444";
-			list.add(new Object[]{contact});
-		}
-		return list.iterator();
-	}
-	
-	public String generateRandomString() {
-		Random rnd = new Random();
-		if (rnd.nextInt(20) == 0){
-			return "";
-		} else {
-			return "Person" + rnd.nextInt();
-		}
-	}
 	
 	@Test(dataProvider = "randomValidContactGenerator")
 	  public void testNonEmptyContactCreation(ContactData contact) throws Exception {

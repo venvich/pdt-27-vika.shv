@@ -40,6 +40,7 @@ public class TestBase {
 		return list.iterator();
 	}
 	
+	
 	public String generateRandomString() {
 		Random rnd = new Random();
 		if (rnd.nextInt(3) == 0) {
@@ -48,4 +49,39 @@ public class TestBase {
 			return "test" + rnd.nextInt();
 		}
 	}
+	
+	@DataProvider
+	public Iterator<Object[]> randomValidContactGenerator() {
+		List<Object[]> list = new ArrayList<Object[]>();
+		
+		for (int i = 0; i<2; i++) {
+			ContactData contact = new ContactData();
+			
+			contact.firstname = generateRandomStringContacts() + "_firstname";
+			contact.lastname = generateRandomStringContacts() + "_lastname";
+			contact.address = generateRandomStringContacts() + "_address";
+			contact.home = "+41411111111";
+			contact.mobile = "+41782222222";
+			contact.work = "+41333333333";
+			contact.email = generateRandomStringContacts() + "@gmail.com";
+			contact.email2 = generateRandomStringContacts() + "@gmail.com";
+			contact.bday = "22";
+			contact.bmonth = "September";
+			contact.byear = "1986";
+			contact.address2 = generateRandomStringContacts() + "_address2";
+			contact.phone2 = "+414444444444";
+			list.add(new Object[]{contact});
+		}
+		return list.iterator();
+	}
+	
+	public String generateRandomStringContacts() {
+		Random rnd = new Random();
+		if (rnd.nextInt(20) == 0){
+			return "";
+		} else {
+			return "Person" + rnd.nextInt();
+		}
+	}
+	
 }
