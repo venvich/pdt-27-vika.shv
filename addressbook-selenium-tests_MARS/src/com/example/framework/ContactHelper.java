@@ -70,17 +70,21 @@ public class ContactHelper extends HelperBase {
 
 	public List<ContactData> getContacts() {
 		List<ContactData> contacts = new ArrayList<ContactData>();
-		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
-		for (WebElement checkbox : checkboxes) {
-			ContactData contact = new ContactData();
-			String title = checkbox.getAttribute("title");
-			//String contactName = contact.firstname + " " + contact.lastname;
-			contact.lastname = title.substring("Select (Personname ".length(), title.length() - ")".length());
-			contacts.add(contact);
+		List<WebElement> rows = driver.findElements(By.xpath("//tbody/tr[@name='entry']"));
+		for (WebElement row : rows) {
+		    ContactData contact = new ContactData();
+		    List<WebElement> cells = row.findElements(By.tagName("td"));
+		    String firstname = cells.get(1).getText();
+		    String lastname = cells.get(2).getText();
+		    String email = cells.get(3).getText();
+		    String home = cells.get(4).getText();
+		    contact.firstname = lastname;
+		    contact.lastname = firstname;
+		    contact.email = email;
+		    contact.home = home;
+		    contacts.add(contact);
 		}
 		return contacts;
 	}
-
-
 
 }
